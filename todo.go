@@ -37,3 +37,14 @@ func (t *Todos) Complete(index int) error {
 
 	return nil
 }
+
+func (t *Todos) Delete(index int) error {
+	ls := *t
+	if index <= 0 || index > len(ls) {
+		return errors.New("Invalid index")
+	}
+
+	*t = append(ls[:index-1], ls[index:]...)
+
+	return nil
+}
