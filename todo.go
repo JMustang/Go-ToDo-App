@@ -117,4 +117,12 @@ func (t *Todos) Print() {
 	}
 
 	table.Body = &simpletable.Body{Cells: cells}
+
+	table.Footer = &simpletable.Footer{Cells: []*simpletable.Cell{
+		{Align: simpletable.AlignCenter, Span: 5, Text: "Your Todo are Here!!"},
+	}}
+
+	table.SetStyle(simpletable.StyleUnicode)
+
+	table.Println()
 }
