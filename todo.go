@@ -115,4 +115,6 @@ func (t *Todos) Print() {
 			{Text: item.CompletedAt.Format(time.RFC822)},
 		})
 	}
+
+	table.Body = &simpletable.Body{Cells: cells}
 }
