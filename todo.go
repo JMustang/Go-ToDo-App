@@ -3,10 +3,11 @@ package todo
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"time"
+
+	"github.com/alexeyco/simpletable"
 )
 
 type item struct {
@@ -85,8 +86,19 @@ func (t *Todos) Store(filename string) error {
 
 func (t *Todos) Print() {
 
-	for i, item := range *t {
-		i++
-		fmt.Printf("%d - %s\n", i, item.Task)
+	// for i, item := range *t {
+	// 	i++
+	// 	fmt.Printf("%d - %s\n", i, item.Task)
+	// }
+	table := simpletable.New()
+
+	table.Header = &simpletable.Header{
+		Cells: []*simpletable.Cell{
+			{Align: simpletable.AlignCenter, Text: "#"},
+			{Align: simpletable.AlignCenter, Text: "Task"},
+			{Align: simpletable.AlignCenter, Text: "Done"},
+			{Align: simpletable.AlignRight, Text: "CreatedAt"},
+			{Align: simpletable.AlignRight, Text: "CompletedAt"},
+		},
 	}
 }
